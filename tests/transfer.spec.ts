@@ -2,7 +2,7 @@ import { test, expect, type Page } from '@playwright/test';
 import { createUserWithBalance, loginViaApi } from './help_functions/api';
 import { expectBalance, expectTransaction, findNewTransactionRow, readTransactionIds, submitTransfer } from './help_functions/ui';
 
-const VALID_PHONE = '+7 (918) 270-04-22';
+const VALID_PHONE = '+7 (999) 999-99-99';
 
 function errorMessage(page: Page) {
     return page.locator('.field-error, .snackbar.error');
@@ -50,9 +50,9 @@ test.describe('Transfer', () => {
     });
 
     const invalidPhones = [
-        { title: 'without leading +', phone: '79182700422' },
-        { title: 'with less than 10 digits', phone: '+7 918 270-04' },
-        { title: 'with more than 15 digits', phone: '+7 918 270-04-22-12345' },
+        { title: 'without leading +', phone: '79999999999' },
+        { title: 'with less than 10 digits', phone: '+7 999 999-99' },
+        { title: 'with more than 15 digits', phone: '+7 999 999-99-99-12345' },
     ];
     for (const { title, phone } of invalidPhones) {
         test(`transfer-3: transfer to phone ${title} is not performed`, async ({ page }) => {
